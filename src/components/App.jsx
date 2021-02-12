@@ -1,45 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
 import { Form, Row, Col } from 'react-bootstrap'
 
-class App extends React.Component {
-  state = {
-    start: 0,
-    monthly: 0,
-    rate: 0,
-    time: 0,
-  }
+const App = () => {
+
+  const [start, setStart] = useState(0)
+  const [monthly, setMonthly] = useMeState(0)
+  const [rate, setRate] = useState(0)
+  const [time, setTime] = useState(0)
+  const [result, setResult] = useState(0)
+
   calculateProfit = () => {
+    const n = 12
 
   }
 
-  render() {
-
-
-    return (
-      <div>
-        <Form>
-          <Row>
-            <Col>
-              <Form.Control placeholder="Startbelob" />
-            </Col>
-            <Col>
-              <Form.Control placeholder="Månedlig opsparing" />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Control placeholder="Årligt afkast" />
-            </Col>
-            <Col>
-              <Form.Control placeholder="Tidshorisont" />
-            </Col>
-          </Row>
-        </Form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Form>
+        <Row>
+          <Col>
+            <Form.Control className="start" placeholder="Startbelob" />
+          </Col>
+          <Col>
+            <Form.Control className="monthly" placeholder="Månedlig opsparing" />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form.Control className="interest" placeholder="Årligt afkast" />
+          </Col>
+          <Col>
+            <Form.Control className="time" placeholder="Tidshorisont" />
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <h1></h1>
+        </Row>
+      </Form>
+    </div>
+  );
 }
+
 
 export default App;
 

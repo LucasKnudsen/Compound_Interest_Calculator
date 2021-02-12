@@ -1,4 +1,6 @@
-
+.col {
+  margin: 25px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

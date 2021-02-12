@@ -40,7 +40,7 @@ const App = () => {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <h1 className="result" >{profit.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</h1>
+          <h1 className="profit" >{profit.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</h1>
         </Row>
       </Form>
     </div>

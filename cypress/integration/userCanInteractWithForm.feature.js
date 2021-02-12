@@ -8,6 +8,6 @@ describe('Form', () => {
     cy.get('.monthly').type('1000')
     cy.get('.interest').type('7')
     cy.get('.time').type('20')
-    cy.get('.result').should('contain', '621.895 kr')
+    cy.get('.profit').should('contain', '621.895 kr')
   })
 })

@@ -47,7 +47,7 @@ const App = () => {
             <Form.Text>{time.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') } år.</Form.Text>
           </Col>
         </Row>
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <h1 className="profit" >{profit.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</h1>
         </Row>
       </Form>

@@ -20,39 +20,27 @@ const App = () => {
     calculateProfit()
   })
 
-  /*
-Compounded interest + future value of series
-P = Principal investment
-PMT = Principal Monthly
-r = interest rate
-n = number of times interest is compounded
-t = the time
-
-( P(1+r/n)**(n*t) ) + ( PMT * (((1+r/n)**(n*t)-1) / (r/n)) )
-
-*/
-
   return (
     <div>
       <Form>
         <Row>
           <Col>
-            <Form.Control className="start" placeholder="Startbelob" />
+            <Form.Control onChange={(event) => {setStart(event.target.value)} } className="start" placeholder="Startbelob" />
           </Col>
           <Col>
-            <Form.Control className="monthly" placeholder="Månedlig opsparing" />
+            <Form.Control onChange={(event) => {setMonthly(event.target.value)} } className="monthly" placeholder="Månedlig opsparing" />
           </Col>
         </Row>
         <Row>
           <Col>
-            <Form.Control className="interest" placeholder="Årligt afkast" />
+            <Form.Control onChange={(event) => {setRate(event.target.value/100)} } className="interest" placeholder="Årligt afkast" />
           </Col>
           <Col>
-            <Form.Control className="time" placeholder="Tidshorisont" />
+            <Form.Control onChange={(event) => {setTime(event.target.value)} } className="time" placeholder="Tidshorisont" />
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <h1>{profit}</h1>
+          <h1 className="result" >{profit.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</h1>
         </Row>
       </Form>
     </div>

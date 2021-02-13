@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
-import { Form, Row, Col } from 'react-bootstrap'
+import { Form, Row, Col, } from 'react-bootstrap'
+import RangeSlider from 'react-bootstrap-range-slider'
 
 const App = () => {
 
@@ -26,26 +27,35 @@ const App = () => {
         <Row>
           <Col>
             <Form.Label>Start belöb</Form.Label>
-            <Form.Control onChange={(event) => { setStart(event.target.value) }} className="start" placeholder="Kroner" />
-            <Form.Text>{start.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') } kr.</Form.Text>
+            <RangeSlider value={start} max="1000000" tooltip="off"
+              onChange={(event) => { setStart(event.target.value) }}
+              className="start" variant="dark" step={1000}/>
+            <Form.Text>{start.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</Form.Text>
           </Col>
           <Col>
             <Form.Label>Månedlig opsparing</Form.Label>
-            <Form.Control onChange={(event) => { setMonthly(event.target.value) }} className="monthly" placeholder="Kroner" />
-            <Form.Text>{monthly.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') } kr.</Form.Text>
+            <RangeSlider value={monthly} max="50000" tooltip="off"
+              onChange={(event) => { setMonthly(event.target.value) }}
+              className="monthly" variant="dark" step={100}/>
+            <Form.Text>{monthly.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</Form.Text>
           </Col>
         </Row>
         <Row>
           <Col>
             <Form.Label>Årligt afkast</Form.Label>
-            <Form.Control onChange={(event) => { setRate(event.target.value / 100) }} className="interest" placeholder="%" />
-            <Form.Text>{rate.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') } %.</Form.Text>
+            <RangeSlider tooltip="off" variant="dark"
+              onChange={(event) => { setRate(event.target.value / 100) }} className="interest"/>
+            <Form.Text>{(rate*100).toFixed(0)} %.</Form.Text>
           </Col>
           <Col>
             <Form.Label>Tidshorisont</Form.Label>
-            <Form.Control onChange={(event) => { setTime(event.target.value) }} className="time" placeholder="År" />
-            <Form.Text>{time.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') } år.</Form.Text>
+            <RangeSlider tooltip="off" variant="dark" max="60"
+              onChange={(event) => { setTime(event.target.value) }} className="time" placeholder="År" />
+            <Form.Text>{time} år.</Form.Text>
           </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <h4>Samlet opsparing efter {time} år:</h4>
         </Row>
         <Row className="justify-content-center">
           <h1 className="profit" >{profit.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</h1>

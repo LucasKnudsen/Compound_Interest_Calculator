@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
+import logo from '../assets/logo.png'
 import { Form, Row, Col, } from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider'
 
@@ -24,19 +25,26 @@ const App = () => {
   return (
     <div>
       <Form>
+        <Row className="justify-content-center">
+          <h1 className="header" >RENTERS RENTER</h1>
+
+        </Row>
+        <Row className="justify-content-center">
+          <img className="logo" src={logo} alt="logo"/>
+        </Row>
         <Row>
           <Col>
-            <Form.Label>Start belöb</Form.Label>
+            <Form.Label>Startbeløb</Form.Label>
             <RangeSlider value={start} max="1000000" tooltip="off"
               onChange={(event) => { setStart(event.target.value) }}
-              className="start" variant="dark" step={1000}/>
+              className="start" variant="dark" step={1000} />
             <Form.Text>{start.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</Form.Text>
           </Col>
           <Col>
             <Form.Label>Månedlig opsparing</Form.Label>
             <RangeSlider value={monthly} max="50000" tooltip="off"
               onChange={(event) => { setMonthly(event.target.value) }}
-              className="monthly" variant="dark" step={100}/>
+              className="monthly" variant="dark" step={100} />
             <Form.Text>{monthly.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr.</Form.Text>
           </Col>
         </Row>
@@ -44,8 +52,8 @@ const App = () => {
           <Col>
             <Form.Label>Årligt afkast</Form.Label>
             <RangeSlider tooltip="off" variant="dark"
-              onChange={(event) => { setRate(event.target.value / 100) }} className="interest"/>
-            <Form.Text>{(rate*100).toFixed(0)} %.</Form.Text>
+              onChange={(event) => { setRate(event.target.value / 100) }} className="interest" />
+            <Form.Text>{(rate * 100).toFixed(0)} %.</Form.Text>
           </Col>
           <Col>
             <Form.Label>Tidshorisont</Form.Label>

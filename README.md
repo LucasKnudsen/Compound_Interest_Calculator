@@ -1,6 +1,7 @@
 # Compounding Interest Calculator
 ## Hobby project
 User can type in details in order to calculate his/her profits.
+Deployed version: https://rentersrenter.netlify.app/
 
 ### User Stories
 ```
